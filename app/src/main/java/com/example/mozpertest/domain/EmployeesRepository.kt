@@ -1,13 +1,12 @@
 package com.example.mozpertest.domain
 
-import android.content.Context
 import androidx.lifecycle.Observer
 import com.example.mozpertest.data.datasources.db.EmployeesDAO
 import com.example.mozpertest.data.datasources.web.EmployeesWeb
 import com.example.mozpertest.data.entities.EmployeesEntity
 import com.example.mozpertest.sys.di.components.DaggerDataSourceComponent
 import com.example.mozpertest.sys.di.modules.ContextModule
-import com.example.mozpertest.ui.MainApplication
+import com.example.mozpertest.MainApplication
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.mozpertest.ui;
+package com.example.mozpertest;
 
 import android.app.Application;
 import android.content.Context;

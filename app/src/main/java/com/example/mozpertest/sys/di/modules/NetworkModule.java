@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
 
 
-@Module
+@Module(includes = ContextModule.class)
 public class NetworkModule {
 
     public static final int
@@ -45,7 +45,7 @@ public class NetworkModule {
     @Singleton
     public Retrofit provideRetrofit(OkHttpClient httpClient) {
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("https://demo3535907.mockable.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient)
                 .build();
