@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MozperTest</string>
+    <string name="none">NONE</string>
+    <string name="bienvenido">¡Bienvenido!</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="description_logout">Logout</string>
+    <string name="description_user_photo">Imagen del empleado</string>
+</resources>
