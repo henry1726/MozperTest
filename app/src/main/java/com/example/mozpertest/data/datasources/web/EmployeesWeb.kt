@@ -19,7 +19,6 @@ class EmployeesWeb {
 
     init {
         DaggerFrameworkComponent.builder()
-            .contextModule(ContextModule(MainApplication.getAppContext()))
             .build()
             .inject(this)
     }
@@ -30,17 +29,20 @@ class EmployeesWeb {
                 call: Call<EmployeesResponse>,
                 response: Response<EmployeesResponse>
             ) {
-                val mBody = response.body()
                 when(response.code()){
                     200 -> {
-                       observer.onChanged(mBody?.employees)
+                        response.body()?.let {
+                            observer.onChanged(it.employees)
+                            Log.i("Download", "Gone")
+                        }
+
                     }
-                    else -> Log.e("descargaFail", response.message())
+                    400 -> Log.e("descargaFail-2: ", response.message() +" "+ response.code())
                 }
             }
 
             override fun onFailure(call: Call<EmployeesResponse>, t: Throwable) {
-                Log.e("descargaFail", "Failure")
+                Log.e("descargaFail", t.localizedMessage)
             }
 
         })

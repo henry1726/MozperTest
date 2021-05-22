@@ -1,6 +1,7 @@
 package com.example.mozpertest.data.datasources.web.api
 
 import com.example.mozpertest.data.datasources.web.reponses.EmployeesResponse
+import com.example.mozpertest.data.entities.EmployeesEntity
 import retrofit2.Call
 import retrofit2.http.GET
 

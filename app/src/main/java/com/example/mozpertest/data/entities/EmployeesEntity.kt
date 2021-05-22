@@ -23,5 +23,5 @@ data class EmployeesEntity(
     @SerializedName("description")
     var description: String,
     @ColumnInfo(name = "rating")
-    @SerializedName("rating")
-    var rating: Int,)
+    @SerializedName("rating") var rating: Double
+    )

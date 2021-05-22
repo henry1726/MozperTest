@@ -6,12 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.mozpertest.databinding.LoginFragmentBinding
+import com.example.mozpertest.sys.di.modules.ViewModelModule
+import com.example.mozpertest.ui.main.EmployeesAdapter
+import com.example.mozpertest.ui.main.HomeFragment
+import com.example.mozpertest.ui.main.HomeViewModel
 import com.example.mozpertest.ui.main.MainActivity
 
 class LoginFragment: Fragment() {
 
     private lateinit var binding: LoginFragmentBinding
+    lateinit var viewModel: LoginViewModel
 
     companion object {
         @JvmStatic
@@ -22,6 +28,10 @@ class LoginFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        activity?.application?.let{
+            viewModel = ViewModelProvider(this, ViewModelModule(it)).get(LoginViewModel::class.java)
+        }
     }
 
     override fun onCreateView(
@@ -29,6 +39,15 @@ class LoginFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = LoginFragmentBinding.inflate(layoutInflater, container, false)
+
+        viewModel.hasLoggedUser()
+        viewModel.hasLoggedUser.observe(viewLifecycleOwner, {
+            if(it) {
+                val intent = Intent(this@LoginFragment.activity, MainActivity::class.java)
+                startActivity(intent)
+            }
+        })
+
         return binding.root
     }
 
@@ -36,8 +55,14 @@ class LoginFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fabLogin.setOnClickListener{
-            val intent = Intent(this@LoginFragment.activity, MainActivity::class.java)
-            startActivity(intent)
+            viewModel.logginUser()
         }
+
+        viewModel.logginUser.observe(viewLifecycleOwner, {
+            if(it){
+                val intent = Intent(this@LoginFragment.activity, MainActivity::class.java)
+                startActivity(intent)
+            }
+        })
     }
 }

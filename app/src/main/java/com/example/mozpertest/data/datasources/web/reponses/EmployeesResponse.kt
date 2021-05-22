@@ -4,5 +4,6 @@ import com.example.mozpertest.data.entities.EmployeesEntity
 import com.google.gson.annotations.SerializedName
 
 data class EmployeesResponse(
-    @SerializedName("employees") var employees: List<EmployeesEntity>
+    @SerializedName("employees") val employees : List<EmployeesEntity>
+
 )

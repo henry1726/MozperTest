@@ -15,7 +15,7 @@ import javax.inject.Singleton;
 public class NetworkModule {
 
     public static final int
-            CONNECT_TIMEOUT = 300, //TODO JUST FOR DEBUG
+            CONNECT_TIMEOUT = 300,
             WRITE_TIMEOUT = 300,
             READ_TIMEOUT = 300;
 
